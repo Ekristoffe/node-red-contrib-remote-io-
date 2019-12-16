@@ -18,12 +18,11 @@ module.exports = function(RED) {
         }
 
         	if (signalType == "Celsius")	{
-        		outputMsg.payload = parseFloat(toFixed(parseInt(msg.payload) / 10, 2));
+        		outputMsg.payload = toFixed(parseInt(msg.payload) / 10, 2);
         	}
         	if (signalType == "Farenheit")	{
-        		outputMsg.payload = parseFloat(toFixed(parseInt((msg.payload) / 10) * (9/5) + 32, 2));        		
+        		outputMsg.payload = toFixed(parseInt((msg.payload) / 10) * (9/5) + 32, 2);        		
         	}
-            node.status({fill: "green",shape: "ring",text: outputMsg.payload});
         	node.send(outputMsg);
         
         });

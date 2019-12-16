@@ -37,17 +37,17 @@ module.exports = function(RED) {
                 case 1: //voltage
                 mbOutData.payload[2] = "1284";   // requests volts for L1 and L2
                 mbOutData.payload[3] = "6";      // requests volts for L3 
-                //statusColor = "red";
+                statusColor = "red";
                 break;
                 case 2: // current 
                 mbOutData.payload[2] = "513";   // requests ampres for L1 and L2
                 mbOutData.payload[3] = "3" ;     // requests ampres for L3     
-                //statusColor = "yellow";
+                statusColor = "yellow";
                 break;
                 case 3: //frequency
                 mbOutData.payload[2] = "4368";   // requests frequency for L1 and L2
                 mbOutData.payload[3] = "18" ;     // requests frequency for L3     
-                //statusColor = "green";
+                statusColor = "green";
                 break;
                 case 4: // wattage
                 break;
@@ -94,7 +94,7 @@ module.exports = function(RED) {
                 context.set('freqL3', freqL3);
                 getDataState = 1;
     }
-        //node.status({fill: statusColor,shape: "ring",text: diagMsg.payload});
+        node.status({fill: statusColor,shape: "ring",text: diagMsg.payload});
         context.set('getDataState', getDataState);
         node.send([diagMsg, mbOutData, voltsL1, voltsL2, voltsL3, ampresL1, ampresL2, ampresL3, freqL1, freqL2, freqL3]);
         
