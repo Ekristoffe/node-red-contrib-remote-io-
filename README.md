@@ -2,7 +2,7 @@
 [Node-RED](http://nodered.org/) nodes to easily map WAGO 750 Modules. 
 
 ##Remote IO 
-![Example](http://i68.tinypic.com/5dntc4.png)
+![Example](http://i66.tinypic.com/qqv30x.png)
 
 Remote IO nodes make it simple to receive and send data in/out of Modbus registers.  Scaling functions and diagnostics are built in where available.
 
