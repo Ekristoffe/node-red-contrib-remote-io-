@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-remote-io",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A node for reading and controlling remote IO",
   "dependencies": {},
   "keywords": [
@@ -23,30 +23,34 @@
       "Power": "wago/WAGO_750_49X.js"
     }
   },
-  "_id": "node-red-contrib-remote-io@1.0.1",
+  "_id": "node-red-contrib-remote-io@1.0.2",
   "scripts": {},
-  "_shasum": "7333a3ba9a51a9d7bc0d839d46e1f0ee1b707c59",
+  "_shasum": "6b765af1d442cd1367fed69f770964fca71bcffe",
   "_from": "node-red-contrib-remote-io@latest",
   "_npmVersion": "2.15.11",
-  "_nodeVersion": "0.10.29",
+  "_nodeVersion": "6.7.0",
   "_npmUser": {
-    "name": "jessejamescox",
-    "email": "jessejamescox@comcast.net"
+    "name": "kurtlbraun",
+    "email": "kurt_braun@hotmail.com"
   },
   "dist": {
-    "shasum": "7333a3ba9a51a9d7bc0d839d46e1f0ee1b707c59",
-    "tarball": "https://registry.npmjs.org/node-red-contrib-remote-io/-/node-red-contrib-remote-io-1.0.1.tgz"
+    "shasum": "6b765af1d442cd1367fed69f770964fca71bcffe",
+    "tarball": "https://registry.npmjs.org/node-red-contrib-remote-io/-/node-red-contrib-remote-io-1.0.2.tgz"
   },
   "maintainers": [
     {
       "name": "jessejamescox",
       "email": "jessejamescox@comcast.net"
+    },
+    {
+      "name": "kurtlbraun",
+      "email": "kurt_braun@hotmail.com"
     }
   ],
   "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/node-red-contrib-remote-io-1.0.1.tgz_1478127005601_0.114246622659266"
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/node-red-contrib-remote-io-1.0.2.tgz_1478128409726_0.09052306157536805"
   },
   "directories": {},
-  "_resolved": "https://registry.npmjs.org/node-red-contrib-remote-io/-/node-red-contrib-remote-io-1.0.1.tgz"
+  "_resolved": "https://registry.npmjs.org/node-red-contrib-remote-io/-/node-red-contrib-remote-io-1.0.2.tgz"
 }

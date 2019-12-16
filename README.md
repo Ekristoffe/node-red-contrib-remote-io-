@@ -1,10 +1,8 @@
 # node-red-contrib-wago
 [Node-RED](http://nodered.org/) nodes to easily map WAGO 750 Modules. 
 
-Modules are to be used at your own risk.  Author accepts no liability for resluts of nodes use.  
-
 ##Example
-![Example](http://i.imgur.com/m2s6JRl.png)
+![Example](https://postimg.org/image/ms4cpqycx/)
 
 ##Version history
 * 0.0.1	First release
