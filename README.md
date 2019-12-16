@@ -28,17 +28,21 @@
 	Alternatively you can "Login" with CoDeSys-IDE and perform "Reset(original)".
 
 	With 750-8xxx
-	By default there is no Modbus server available, you must use e!Cockpit to create your own Modbus server.
+	By default there is no Modbus server available, you must create your own Modbus server by using:
+		759-911: WAGO-I/O-PRO-CAA (CoDeSys 2.3)
+		2759-101: e!Cockpit
+		[KbusModbusSlave (Official)](https://github.com/WAGO/pfc-howtos/tree/master/HowTo_AddKbusModbusSlave)
+		[KbusModbusSlave (Development/Experimental)](https://github.com/Ekristoffe/HowTo_AddKbusModbusSlave)
 	
 # Example
 ##Example
-![Example](https://github.com/Ekristoffe/node-red-contrib-remote-io/blob/master/wago/icons/old/flow_example.png)
+![Example](https://github.com/Ekristoffe/node-red-contrib-remote-io/blob/develop/wago/icons/old/flow_example.png)
 
-![Example](https://github.com/Ekristoffe/node-red-contrib-remote-io/blob/master/wago/icons/old/flow_example2.png)
+![Example](https://github.com/Ekristoffe/node-red-contrib-remote-io/blob/develop/wago/icons/old/flow_example2.png)
 
-	https://github.com/Ekristoffe/node-red-contrib-remote-io/blob/master/wago/icons/old/flow_example.png
+	https://github.com/Ekristoffe/node-red-contrib-remote-io/blob/develop/wago/icons/old/flow_example.png
 
-	https://github.com/Ekristoffe/node-red-contrib-remote-io/blob/master/wago/icons/old/flow_example2.png
+	https://github.com/Ekristoffe/node-red-contrib-remote-io/blob/develop/wago/icons/old/flow_example2.png
 
 	
 # Release Note
