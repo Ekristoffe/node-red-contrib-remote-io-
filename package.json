@@ -1,8 +1,43 @@
 {
-  "name": "node-red-contrib-remote-io",
-  "version": "1.0.8",
-  "description": "A node for reading and controlling remote IO",
+  "_from": "node-red-contrib-remote-io@2.0.0",
+  "_id": "node-red-contrib-remote-io@2.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-xynUsYszLnT6cSxoH6BNVzKPo9A=",
+  "_location": "/node-red-contrib-remote-io",
+  "_nodeVersion": "6.7.0",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/node-red-contrib-remote-io-1.0.2.tgz_1478128409726_0.09052306157536805"
+  },
+  "_npmVersion": "2.15.11",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "node-red-contrib-remote-io@2.0.0",
+    "name": "node-red-contrib-remote-io",
+    "escapedName": "node-red-contrib-remote-io",
+    "rawSpec": "2.0.0",
+    "saveSpec": null,
+    "fetchSpec": "2.0.0"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/node-red-contrib-remote-io/-/node-red-contrib-remote-io-2.0.0.tgz",
+  "_shasum": "c729d4b18b332e74fa712c681fa04d57328fa3d0",
+  "_spec": "node-red-contrib-remote-io@2.0.0",
+  "_where": "/data",
+  "bundleDependencies": false,
   "dependencies": {},
+  "deprecated": false,
+  "description": "A node for reading and controlling remote IO",
+  "directories": {},
+  "dist": {
+    "shasum": "6b765af1d442cd1367fed69f770964fca71bcffe",
+    "tarball": "https://registry.npmjs.org/node-red-contrib-remote-io/-/node-red-contrib-remote-io-1.0.2.tgz"
+  },
   "keywords": [
     "node-red",
     "wago",
@@ -14,6 +49,17 @@
     "automation",
     "Power Measurement"
   ],
+  "maintainers": [
+    {
+      "name": "jessejamescox",
+      "email": "jess.coxpdx@gmail.com"
+    },
+    {
+      "name": "kurtlbraun",
+      "email": "kurt_braun@hotmail.com"
+    }
+  ],
+  "name": "node-red-contrib-remote-io",
   "node-red": {
     "nodes": {
       "DigitalIn": "wago/WAGO_DI.js",
@@ -23,34 +69,6 @@
       "Power": "wago/WAGO_750_49X.js"
     }
   },
-  "_id": "node-red-contrib-remote-io@1.0.2",
   "scripts": {},
-  "_shasum": "6b765af1d442cd1367fed69f770964fca71bcffe",
-  "_from": "node-red-contrib-remote-io@latest",
-  "_npmVersion": "2.15.11",
-  "_nodeVersion": "6.7.0",
-  "_npmUser": {
-    "name": "kurtlbraun",
-    "email": "kurt_braun@hotmail.com"
-  },
-  "dist": {
-    "shasum": "6b765af1d442cd1367fed69f770964fca71bcffe",
-    "tarball": "https://registry.npmjs.org/node-red-contrib-remote-io/-/node-red-contrib-remote-io-1.0.2.tgz"
-  },
-  "maintainers": [
-    {
-      "name": "jessejamescox",
-      "email": "jessejamescox@comcast.net"
-    },
-    {
-      "name": "kurtlbraun",
-      "email": "kurt_braun@hotmail.com"
-    }
-  ],
-  "_npmOperationalInternal": {
-    "host": "packages-18-east.internal.npmjs.com",
-    "tmp": "tmp/node-red-contrib-remote-io-1.0.2.tgz_1478128409726_0.09052306157536805"
-  },
-  "directories": {},
-  "_resolved": "https://registry.npmjs.org/node-red-contrib-remote-io/-/node-red-contrib-remote-io-1.0.2.tgz"
+  "version": "2.0.0"
 }

@@ -1,7 +1,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('Temperature Input',{
         category: 'Remote IO',
-        color: '#00b200',
+        color: '#EBEDEC',
         defaults: {
             name: {value:""},
             sensorType: {value:"RTD"},
@@ -9,7 +9,7 @@
         },
         inputs:1,
         outputs:1,
-        icon: "RIO.png",
+        icon: "iconAI.png",
         label: function() {
             return this.name||"Temperature Input";
         }
@@ -43,6 +43,6 @@
     
     Select the desired module and output type, scaling, etc...<br/>
     <br/>
-    The node is for a single channel only so rerequires only 1 WORD ( INT ) of input data.  Output is a string value.  Status bits are output on node status only.<br/>
+    The node is for a single channel only so rerequires only 1 WORD ( INT ) of input data.  Output is a float value.  Status bits are output on node status only.<br/>
     </p>
 </script>

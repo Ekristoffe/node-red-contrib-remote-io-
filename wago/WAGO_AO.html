@@ -1,7 +1,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('Analog Output',{
         category: 'Remote IO',
-        color: '#00b200',
+        color: '#EBEDEC',
         defaults: {
             name: {value:""},
             sensorType: {value:"4-20mA"},
@@ -13,7 +13,7 @@
         },
         inputs:1,
         outputs:1,
-        icon: "RIO.png",
+        icon: "iconAO.png",
         align: 'right',
         label: function() {
             return this.name||"Analog Output";

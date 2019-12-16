@@ -108,7 +108,7 @@ module.exports = function(RED) {
 					outputMsg.payload = val_int16;
                     break;
                 case "SensorVal":
-                    outputMsg.payload = toFixed(actualSensorValue, prec);
+                    outputMsg.payload = parseFloat(toFixed(actualSensorValue, prec));
                     break;
                 case "Scaled":
                 	if (sensorType == "+/-10VDC"){
@@ -116,7 +116,7 @@ module.exports = function(RED) {
                     } else {
                     	var scaledHold = scale(msg.payload, rawMinInput, rawMaxInput, low, high);
                     }
-                    outputMsg.payload = toFixed(scaledHold, prec);
+                    outputMsg.payload = parseFloat(toFixed(scaledHold, prec));
                 break;
             }
             node.send(outputMsg);
