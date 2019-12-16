@@ -23,6 +23,7 @@ module.exports = function(RED) {
         	if (signalType == "Farenheit")	{
         		outputMsg.payload = toFixed(parseInt((msg.payload) / 10) * (9/5) + 32, 2);        		
         	}
+            node.status({fill: "green",shape: "ring",text: outputMsg.payload});
         	node.send(outputMsg);
         
         });
