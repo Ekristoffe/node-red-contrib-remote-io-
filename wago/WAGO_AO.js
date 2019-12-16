@@ -1,125 +1,303 @@
 module.exports = function(RED) {
-    "use strict";
+	"use strict";
 
-    function analogOutput(n) {
-       RED.nodes.createNode(this,n);
-       //var context = this.context();
-       var node = this;
-       var sensorType = n.sensorType;
-       var resolution = n.resolution;
-       var low = n.low;
-       var high = n.high;
-       var prec = n.precision;
-       var selectedProcess = n.selectedProcess;
+	function analogOutput(n) {
+		RED.nodes.createNode(this,n);
+		var context = this.context();
+		var node = this;
+		var wordOffset = parseInt(n.wordOffset);
+		var module = n.module;
+		var inputData = n.inputData;
+		var sensorLow = parseInt(n.sensorLow);
+		var sensorHigh = parseInt(n.sensorHigh);
+		var signalLow = parseInt(n.signalLow);
+		var signalHigh = parseInt(n.signalHigh);
+		var rawLow = parseInt(n.rawLow);
+		var rawHigh = parseInt(n.rawHigh);
+		var rawMask = 0xFFFF;
+		var raw2Complement = n.raw2Complement;
+		var resolution = n.resolution;
+		var startbit = parseInt(n.startbit);
+		var name = n.name;
+		var topic = n.topic;
+		// Init the array of data
+		var _data = [];
+		for (var i = 0; i <= wordOffset; i++) {
+			_data[i] = 0;
+		}
+		context.set('data', _data);
+		
+		switch(module) {
+			case "750-550":
+				rawLow = 0; // 0x0000
+				rawHigh = 32767; // 0x7FFF
+				rawMask = 0x7FFF; // 16 bit
+				raw2Complement = false;
+				resolution = "16_Bit";
+				startbit = 0;
+				signalLow = 0;
+				signalHigh = 10;
+				break;
+			case "750-552":
+				rawLow = 0; // 0x0000
+				rawHigh = 32767; // 0x7FFF
+				rawMask = 0x7FFF; // 16 bit
+				raw2Complement = false;
+				resolution = "16_Bit";
+				startbit = 0;
+				signalLow = 0;
+				signalHigh = 20;
+				break; 
 
-       // scales number
-       function scale(x, i_lo, i_hi, o_lo, o_hi)    {
-            var multiplier = (o_hi - o_lo) / (i_hi - i_lo);
-            var scaledVal = (multiplier * limit(i_lo, x, i_hi)) + o_lo;
-            return(scaledVal);
-        }
-        function limit(i_lo, x, i_hi){
-            var last = 0;
-            if (x<i_lo){
-                return(i_lo);
-            } else {
-                if (x>i_hi){
-                    return(i_hi);
-                } else {
-                    return(x);
-                }
-            }
-        }
-        function toFixed( num, precision ) {
-        return (+(Math.round(+(num + 'e' + precision)) + 'e' + -precision)).toFixed(precision);
-        }
-
-        this.on('input', function(msg) {
-            var rawInput = parseInt(msg.payload);
-            var rawMinOutput = 0;
-            var rawMaxOutput = 0;
-            var outputMsg = {};
-            var actualSensorValue;
-            var val_10vdc = 0;
-            var val_int16 = 0;
-            var scaledHold = 0;
-
-            // set the max value
-            switch(resolution)  {
-                case "12_Bit":
-                    rawMinOutput = 0;
-                    rawMaxOutput = 32767;
-                    break;
-                case "13_Bit":
-                    rawMinOutput = 0;
-                    rawMaxOutput = 32767;
-                    break;
-                case "13_Bit_signed":
-                    rawMinOutput = -32768;
-                    rawMaxOutput = 32767;
-                    break;
-                case "14_Bit":
-                    rawMinOutput = 0;
-                    rawMaxOutput = 32767;
-                    break;
-                case "15_Bit":
-                    rawMinOutput = 0;
-                    rawMaxOutput = 32767;
-                    break;
-                case "15_Bit_signed":
-                    rawMinOutput = -32767;
-                    rawMaxOutput = 32767;
-                    break;
-                case "16_Bit":
-                    rawMinOutput = 0;
-                    rawMaxOutput = 65535;
-                    break;                
-            }
-
-            switch(sensorType)  {
-                case "0-20mA":
-                    //actualSensorValue = scale(msg.payload, 0, 20, rawMinOutput, rawMaxOutput);
-                    break;
-                case "4-20mA":
-                    //actualSensorValue = scale(msg.payload, 4, 20, rawMinOutput, rawMaxOutput);
-                    break;
-                case "0-10VDC":
-                    //actualSensorValue = scale(msg.payload, 0, 10, rawMinOutput, rawMaxOutput);
-                    break;
-                case "+/-10VDC": 
-                    if (msg.payload < (high-low)/2){
-                        var valX = 0;
-                        valX = scale(msg.payload, low, (high-low)/2, 0, rawMaxOutput); 
-                        val_10vdc = valX * -1 + 65535;
-                    } else {
-                        val_10vdc = scale(msg.payload, (high-low)/2, high, 0, rawMaxOutput); 
-                        val_10vdc = val_10vdc + 32767;           
-                    }
-                    actualSensorValue = val_10vdc;   
-                    break;
-                case "0-30VDC":
-                    //actualSensorValue = scale(msg.payload, 0, 30, rawMinOutput, rawMaxOutput);
-                    break;
-            }
-            // operation based on processSelected
-            switch(selectedProcess) {
-                case "Raw":
-                    outputMsg.payload = msg.payload;
-                    break;
-                case "SensorVal":
-                    outputMsg.payload = actualSensorValue;
-                    break;
-                case "Scaled":
-                    if (sensorType == "+/-10VDC"){
-                        scaledHold = actualSensorValue;                        
-                    } else {
-                        scaledHold = scale(msg.payload, low, high, rawMinOutput, rawMaxOutput);
-                    }
-                    outputMsg.payload = toFixed(scaledHold, 0); 
-                    break;
-            }
-            node.send(outputMsg);
-        });
-    }
-    RED.nodes.registerType("Analog Output",analogOutput);
+			case "750-553":
+				rawLow = 0; // 0x0000
+				rawHigh = 32767; // 0x7FFF
+				rawMask = 0x7FFF; // 16 bit
+				raw2Complement = false;
+				resolution = "16_Bit";
+				startbit = 0;
+				signalLow = 0;
+				signalHigh = 20;
+				break;
+			case "750-554":
+				rawLow = 0; // 0x0000
+				rawHigh = 32767; // 0x7FFF
+				rawMask = 0x7FFF; // 16 bit
+				raw2Complement = false;
+				resolution = "16_Bit";
+				startbit = 0;
+				signalLow = 4;
+				signalHigh = 20;
+				break;
+			case "750-555":
+				rawLow = 0; // 0x0000
+				rawHigh = 32767; // 0x7FFF
+				rawMask = 0x7FFF; // 16 bit
+				raw2Complement = false;
+				resolution = "16_Bit";
+				startbit = 0;
+				signalLow = 4;
+				signalHigh = 20;
+				break;
+			case "750-556":
+				rawLow = -32767; // 0x8001
+				rawHigh = 32767; // 0x7FFF
+				rawMask = 0xFFFF; // 16 bit
+				raw2Complement = true;
+				resolution = "16_Bit";
+				startbit = 0;
+				signalLow = -10;
+				signalHigh = 10;
+				break;
+			case "750-557":
+				rawLow = -32767; // 0x8001
+				rawHigh = 32767; // 0x7FFF
+				rawMask = 0xFFFF; // 16 bit
+				raw2Complement = true;
+				resolution = "16_Bit";
+				startbit = 0;
+				signalLow = -10;
+				signalHigh = 10;
+				break;
+			case "750-559":
+				rawLow = 0; // 0x0000
+				rawHigh = 32767; // 0x7FFF
+				rawMask = 0x7FFF; // 16 bit
+				raw2Complement = false;
+				resolution = "16_Bit";
+				startbit = 0;
+				signalLow = 0;
+				signalHigh = 10;
+				break;
+			case "750-560":
+				rawLow = 0; // 0x0000
+				rawHigh = 32767; // 0x7FFF
+				rawMask = 0x7FFF; // 16 bit
+				raw2Complement = false;
+				resolution = "16_Bit";
+				startbit = 5;
+				signalLow = 0;
+				signalHigh = 10;
+				break;
+			case "750-562":
+				rawLow = 0; // 0x0000
+				rawHigh = 65535; // 0xFFFF
+				rawMask = 0xFFFF; // 16 bit
+				raw2Complement = false;
+				resolution = "16_Bit";
+				startbit = 0;
+				signalLow = 0;
+				signalHigh = 10;
+				break;
+			case "750-563":
+				rawLow = 0; // 0x0000
+				rawHigh = 65535; // 0xFFFF
+				rawMask = 0xFFFF; // 16 bit
+				raw2Complement = false;
+				resolution = "16_Bit";
+				startbit = 0;
+				signalLow = 4;
+				signalHigh = 20;
+				break;
+			case "750-597":
+				rawLow = 0; // 0x0000
+				rawHigh = 32767; // 0x7FFF
+				rawMask = 0x7FFF; // 16 bit
+				raw2Complement = false;
+				resolution = "16_Bit";
+				startbit = 0;
+				signalLow = 0;
+				signalHigh = 10;
+				break;
+			default:
+				rawMask = 0xFFFF;
+				switch(resolution) {
+					case "8_Bit":
+						rawMask = 0x00FF;
+						break;
+					case "12_Bit":
+						rawMask = 0x0FFF;
+						break;
+					case "16_Bit":
+						rawMask = 0xFFFF;
+						break;
+					case "20_Bit":
+						rawMask = 0xFFFFF;
+						break;
+					case "24_Bit":
+						rawMask = 0xFFFFFF;
+						break;
+					case "28_Bit":
+						rawMask = 0xFFFFFFF;
+						break;
+					case "32_Bit":
+						rawMask = 0xFFFFFFFF;
+						break;
+					default:
+						rawMask = 0xFFFF;
+						break;
+				}
+				rawMask = rawMask >>> startbit;
+				rawMask = rawMask << startbit;
+				break;
+		}
+		
+		// scales number (the scaled number can be outside the range of point A and B)
+		function scale(_x, _xA, _xB, _yA, _yB) {
+			// find the slope m
+			var _m = (_yB - _yA) / (_xB - _xA);
+			// find the intercept p
+			var _p = _yA - (_m * _xA);
+			// calculate the y
+			var _y = (_m * _x) + _p;
+			
+			return(_y);
+		}
+		
+		// limit number
+		function limit(_lo, _val, _hi) {
+			if (_val < _lo) {
+				return(_lo);
+			} else {
+				if (_val > _hi) {
+					return(_hi);
+				} else {
+					return(_val);
+				}
+			}
+		}
+		
+		function toFixed(num, precision) {
+			return (+(Math.round(+(num + 'e' + precision)) + 'e' + -precision)).toFixed(precision);
+		}
+		
+		function fromSigned(_num) {
+			var _mask = 0x8000;
+			var _sub = 0x10000;
+			
+			switch(resolution){
+				case "4_Bit":
+					_mask = 0x8;
+					_sub = 0x10;
+					break;
+				case "8_Bit":
+					_mask = 0x80;
+					_sub = 0x100;
+					break;
+				case "12_Bit":
+					_mask = 0x800;
+					_sub = 0x1000;
+					break;
+				case "16_Bit":
+					_mask = 0x8000;
+					_sub = 0x10000;
+					break;
+				case "20_Bit":
+					_mask = 0x80000;
+					_sub = 0x100000;
+					break;
+				case "24_Bit":
+					_mask = 0x800000;
+					_sub = 0x1000000;
+					break;
+				case "28_Bit":
+					_mask = 0x8000000;
+					_sub = 0x10000000;
+					break;
+				case "32_Bit":
+					_mask = 0x80000000;
+					_sub = 0x100000000;
+					break;
+			}
+			
+			if (_num < 0) {
+				if (raw2Complement !== false) {
+					_num = _num + _sub;
+				} else {
+					_num = (_num & ~_mask) * -1;
+				}
+			}
+			return _num;
+		}
+		
+		this.on('input', function(msg) {
+			var _object = [];
+			var _rawOutput = 0;
+			var _rawValue = parseInt(msg.payload);
+			
+			// operation based on outputData
+			switch(inputData) {
+				case "Raw":
+					_rawOutput = _rawValue;
+					break;
+				case "Signal":
+					_rawOutput = scale(_rawValue, signalLow, signalHigh, rawLow, rawHigh);
+					_rawOutput = fromSigned(toFixed(_rawOutput, 0));
+					break;
+				case "Sensor":
+					_rawOutput = scale(_rawValue, sensorLow, sensorHigh, rawLow, rawHigh);
+					_rawOutput = fromSigned(toFixed(_rawOutput, 0));
+					break;
+				default:
+					_rawOutput = _rawValue;
+					break;
+			}
+			// get the context value
+			var _data = context.get('data') || [];
+			// copy the output payload
+			_data[wordOffset] = _rawOutput;
+			// store the context value back
+			context.set('data', _data);
+			_object[0] = {topic:topic,payload:_rawOutput};
+			_object[1] = {topic:topic,payload:_data};
+			node.send([_object[0], _object[1]]);
+		});
+		
+		if (module === "none") {
+			node.status({fill: "green",shape: "ring",text: "Analog output"});
+		} else{
+			node.status({fill: "green",shape: "ring",text: module});
+		}
+	}
+	RED.nodes.registerType("Analog Output",analogOutput);
 };

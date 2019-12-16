@@ -1,23 +1,35 @@
 {
-    "name": "node-red-contrib-remote-io",
-    "version": "0.1.3",
-    "description": "A sample node for node-red",
-    "dependencies": {},
-    "keywords": [
-        "node-red",
-        "wago",
-        "modbus",
-        "750",
-        "Thermocouple",
-        "Power Measurement"
-    ],
-    "node-red": {
-        "nodes": {
-            "DigitalIn": "wago/WAGO_DI.js",
-            "AnalogIn": "wago/WAGO_AI.js",
-            "Temp": "wago/WAGO_TEMP.js",
-            "AnalogOut": "wago/WAGO_AO.js",
-            "Power": "wago/WAGO_750_49X.js"
-        }
-    }
+	"name": "node-red-contrib-remote-io",
+	"version": "0.1.4",
+	"description": "A node for reading and controlling remote IO",
+	"dependencies": {
+	},
+	"keywords": [
+		"node-red",
+		"wago",
+		"modbus",
+		"750",
+		"thermocouple",
+		"plc",
+		"rtd",
+		"automation",
+		"Power Measurement"
+	],
+	"node-red": {
+		"nodes": {
+			"AnalogIn": "wago/WAGO_AI.js",
+			"AnalogOut": "wago/WAGO_AO.js",
+			"DigitalIn": "wago/WAGO_DI.js",
+			"DigitalOut": "wago/WAGO_DO.js",
+			"Temperature": "wago/WAGO_TEMP.js",
+			"DALI": "wago/WAGO_753_647.js",
+			"PowerMeasurement": "wago/WAGO_750_49X.js"
+		}
+	}
+	"author": [
+		"Jesse James Cox <jess.coxpdx@gmail.com> (http://example.com)",
+		"Kurtl Braun <kurt_braun@hotmail.com> (http://example.com)",
+		"Christophe Icard <aidasan@hotmail.fr> (http://example.com)"
+	],
+	"license": "MIT"
 }
