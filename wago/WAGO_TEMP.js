@@ -21,7 +21,7 @@ module.exports = function(RED) {
         		outputMsg.payload = toFixed(parseInt(msg.payload) / 10, 2);
         	}
         	if (signalType == "Farenheit")	{
-        		outputMsg.payload = toFixed(parseInt((msg.payload) / 10) * (9/5) + 32, 2);        		
+        		outputMsg.payload = parseFloat(toFixed(parseInt((msg.payload) / 10) * (9/5) + 32, 2));        		
         	}
         	node.send(outputMsg);
         

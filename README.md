@@ -4,7 +4,7 @@
 Modules are to be used at your own risk.  Author accepts no liability for resluts of nodes use.  
 
 ##Example
-![Example](http://tinyimg.io/i/QdYxNxg.png)
+![Example](http://i.imgur.com/m2s6JRl.png)
 
 ##Version history
 * 0.0.1	First release
