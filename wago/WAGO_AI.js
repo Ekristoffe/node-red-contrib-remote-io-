@@ -11,7 +11,7 @@ module.exports = function(RED) {
 		var outputPrecision = parseInt(n.outputPrecision,10);
 		var rawLow = parseInt(n.rawLow,10);
 		var rawHigh = parseInt(n.rawHigh,10);
-		var rawMask = 0xFFFF;
+		var rawMask = 0xFFFF >>> 0;
 		var raw2Complement = n.raw2Complement;
 		var resolution = n.resolution;
 		var startbit = parseInt(n.startbit,10);
@@ -26,7 +26,7 @@ module.exports = function(RED) {
 			case "750-452":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x7FF8; // 32760
-				rawMask = 0x7FF8; // 12 bit
+				rawMask = 0x7FF8 >>> 0; // 12 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 3;
@@ -36,7 +36,7 @@ module.exports = function(RED) {
 			case "750-453":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x7FF8; // 32760
-				rawMask = 0x7FF8; // 12 bit
+				rawMask = 0x7FF8 >>> 0; // 12 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 3;
@@ -46,7 +46,7 @@ module.exports = function(RED) {
 			case "750-454":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x7FF8; // 32760
-				rawMask = 0x7FF8; // 12 bit
+				rawMask = 0x7FF8 >>> 0; // 12 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 3;
@@ -56,7 +56,7 @@ module.exports = function(RED) {
 			case "750-455":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x7FF8; // 32760
-				rawMask = 0x7FF8; // 12 bit
+				rawMask = 0x7FF8 >>> 0; // 12 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 3;
@@ -66,7 +66,7 @@ module.exports = function(RED) {
 			case "750-456":
 				rawLow = 0x8000; // −32768
 				rawHigh = 0x7FF8; // 32760
-				rawMask = 0xFFF8; // 12 bit
+				rawMask = 0xFFF8 >>> 0; // 12 bit
 				raw2Complement = true;
 				resolution = "16_Bit";
 				startbit = 3;
@@ -76,7 +76,7 @@ module.exports = function(RED) {
 			case "750-457":
 				rawLow = 0x8000; // −32768
 				rawHigh = 0x7FF8; // 32760
-				rawMask = 0xFFF8; // 12 bit
+				rawMask = 0xFFF8 >>> 0; // 12 bit
 				raw2Complement = true;
 				resolution = "16_Bit";
 				startbit = 3;
@@ -86,7 +86,7 @@ module.exports = function(RED) {
 			case "750-459":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x7FF8; // 32760
-				rawMask = 0x7FF8; // 12 bit
+				rawMask = 0x7FF8 >>> 0; // 12 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 3;
@@ -97,7 +97,7 @@ module.exports = function(RED) {
 			case "750-465":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x7FF8; // 32760
-				rawMask = 0x7FF8; // 12 bit
+				rawMask = 0x7FF8 >>> 0; // 12 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 3;
@@ -107,7 +107,7 @@ module.exports = function(RED) {
 			case "750-466":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x7FF8; // 32760
-				rawMask = 0x7FF8; // 12 bit
+				rawMask = 0x7FF8 >>> 0; // 12 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 3;
@@ -117,7 +117,7 @@ module.exports = function(RED) {
 			case "750-467":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x7FF8; // 32760
-				rawMask = 0x7FF8; // 12 bit
+				rawMask = 0x7FF8 >>> 0; // 12 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 3;
@@ -127,7 +127,7 @@ module.exports = function(RED) {
 			case "750-468":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x7FF8; // 32760
-				rawMask = 0x7FF8; // 12 bit
+				rawMask = 0x7FF8 >>> 0; // 12 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 3;
@@ -138,7 +138,7 @@ module.exports = function(RED) {
 			case "750-470":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x5000; // 20480
-				rawMask = 0x7FF8; // 12 bit
+				rawMask = 0x7FF8 >>> 0; // 12 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 3;
@@ -148,7 +148,7 @@ module.exports = function(RED) {
 			case "750-471":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x7FFF; // 32767
-				rawMask = 0x7FFF; // 15 bit
+				rawMask = 0x7FFF >>> 0; // 15 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 0;
@@ -158,7 +158,7 @@ module.exports = function(RED) {
 			case "750-472":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x7FFF; // 32767
-				rawMask = 0x7FFF; // 15 bit
+				rawMask = 0x7FFF >>> 0; // 15 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 0;
@@ -168,7 +168,7 @@ module.exports = function(RED) {
 			case "750-473":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x7FF8; // 32760
-				rawMask = 0x7FF8; // 12 bit
+				rawMask = 0x7FF8 >>> 0; // 12 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 3;
@@ -178,7 +178,7 @@ module.exports = function(RED) {
 			case "750-474":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x7FFF; // 32767
-				rawMask = 0x7FFF; // 15 bit
+				rawMask = 0x7FFF >>> 0; // 15 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 0;
@@ -188,7 +188,7 @@ module.exports = function(RED) {
 			case "750-475":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x2710; // 10000
-				rawMask = 0x7FFF; // 15 bit
+				rawMask = 0x7FFF >>> 0; // 15 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 0;
@@ -198,7 +198,7 @@ module.exports = function(RED) {
 			case "750-475/020-000":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x6AA9; // 10000
-				rawMask = 0x7FFF; // 15 bit
+				rawMask = 0x7FFF >>> 0; // 15 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 0;
@@ -208,7 +208,7 @@ module.exports = function(RED) {
 			case "750-476":
 				rawLow = 0x8000; // −32768
 				rawHigh = 0x7FFF; // 32767
-				rawMask = 0xFFFF; // 16 bit
+				rawMask = 0xFFFF >>> 0; // 16 bit
 				raw2Complement = true;
 				resolution = "16_Bit";
 				startbit = 0;
@@ -218,7 +218,7 @@ module.exports = function(RED) {
 			case "750-477":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x2710; // 10000
-				rawMask = 0x7FFF; // 15 bit
+				rawMask = 0x7FFF >>> 0; // 15 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 0;
@@ -228,7 +228,7 @@ module.exports = function(RED) {
 			case "750-478":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x7FFF; // 32767
-				rawMask = 0x7FFF; // 15 bit
+				rawMask = 0x7FFF >>> 0; // 15 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 0;
@@ -238,7 +238,7 @@ module.exports = function(RED) {
 			case "750-479":
 				rawLow = 0x8000; // −32768
 				rawHigh = 0x7FFC; // 32764
-				rawMask = 0xFFFC; // 14 bit
+				rawMask = 0xFFFC >>> 0; // 14 bit
 				raw2Complement = true;
 				resolution = "16_Bit";
 				startbit = 2;
@@ -249,7 +249,7 @@ module.exports = function(RED) {
 			case "750-480":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x7FFC; // 32764
-				rawMask = 0x7FFC; // 13 bit
+				rawMask = 0x7FFC >>> 0; // 13 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 2;
@@ -259,7 +259,7 @@ module.exports = function(RED) {
 			case "750-482":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x7FFC; // 32764
-				rawMask = 0x7FFC; // 13 bit
+				rawMask = 0x7FFC >>> 0; // 13 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 2;
@@ -269,7 +269,7 @@ module.exports = function(RED) {
 			case "750-483":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x7FFE; // 32766
-				rawMask = 0x7FFE; // 14 bit
+				rawMask = 0x7FFE >>> 0; // 14 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 1;
@@ -280,7 +280,7 @@ module.exports = function(RED) {
 			case "750-492":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x7FFC; // 32764
-				rawMask = 0x7FFC; // 13 bit
+				rawMask = 0x7FFC >>> 0; // 13 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 2;
@@ -290,7 +290,7 @@ module.exports = function(RED) {
 			case "750-496":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x7FF8; // 32760
-				rawMask = 0x7FF8; // 12 bit
+				rawMask = 0x7FF8 >>> 0; // 12 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 3;
@@ -300,7 +300,7 @@ module.exports = function(RED) {
 			case "750-497":
 				rawLow = 0x0000; // 0
 				rawHigh = 0x7FF8; // 32760
-				rawMask = 0x7FF8; // 12 bit
+				rawMask = 0x7FF8 >>> 0; // 12 bit
 				raw2Complement = false;
 				resolution = "16_Bit";
 				startbit = 3;
@@ -308,34 +308,34 @@ module.exports = function(RED) {
 				signalHigh = 10;
 				break;
 			default:
-				rawMask = 0xFFFF;
+				rawMask = 0xFFFF >>> 0;
 				switch(resolution) {
 					case "8_Bit":
-						rawMask = 0x00FF;
+						rawMask = 0x00FF >>> 0;
 						break;
 					case "12_Bit":
-						rawMask = 0x0FFF;
+						rawMask = 0x0FFF >>> 0;
 						break;
 					case "16_Bit":
-						rawMask = 0xFFFF;
+						rawMask = 0xFFFF >>> 0;
 						break;
 					case "20_Bit":
-						rawMask = 0xFFFFF;
+						rawMask = 0xFFFFF >>> 0;
 						break;
 					case "24_Bit":
-						rawMask = 0xFFFFFF;
+						rawMask = 0xFFFFFF >>> 0;
 						break;
 					case "28_Bit":
-						rawMask = 0xFFFFFFF;
+						rawMask = 0xFFFFFFF >>> 0;
 						break;
 					case "32_Bit":
-						rawMask = 0xFFFFFFFF;
+						rawMask = 0xFFFFFFFF >>> 0;
 						break;
 					default:
-						rawMask = 0xFFFF;
+						rawMask = 0xFFFF >>> 0;
 						break;
 				}
-				rawMask = rawMask << startbit;
+				rawMask = (rawMask << startbit) >>> 0;
 				break;
 		}
 		
