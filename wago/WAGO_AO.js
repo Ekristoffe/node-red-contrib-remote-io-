@@ -1,4 +1,5 @@
-let wagoFunctions = require("./WAGO_Functions");
+const wagoFunctions = require("./WAGO_Functions");
+const math			= require("util");
 
 module.exports = function(RED) {
 	"use strict";
@@ -158,28 +159,28 @@ module.exports = function(RED) {
 				rawMask = 0xFFFF >>> 0;
 				switch(resolution) {
 					case "8_Bit":
-						rawMask = 0x00FF >>> 0;
+						rawMask = Math.pow(10,8) >>> 0;
 						break;
 					case "12_Bit":
-						rawMask = 0x0FFF >>> 0;
+						rawMask = Math.pow(10,12) >>> 0;
 						break;
 					case "16_Bit":
-						rawMask = 0xFFFF >>> 0;
+						rawMask = Math.pow(10,16) >>> 0;
 						break;
 					case "20_Bit":
-						rawMask = 0xFFFFF >>> 0;
+						rawMask = Math.pow(10,20) >>> 0;
 						break;
 					case "24_Bit":
-						rawMask = 0xFFFFFF >>> 0;
+						rawMask = Math.pow(10,24) >>> 0;
 						break;
 					case "28_Bit":
-						rawMask = 0xFFFFFFF >>> 0;
+						rawMask = Math.pow(10,28) >>> 0;
 						break;
 					case "32_Bit":
-						rawMask = 0xFFFFFFFF >>> 0;
+						rawMask = Math.pow(10,32) >>> 0;
 						break;
 					default:
-						rawMask = 0xFFFF >>> 0;
+						rawMask = Math.pow(10,16) >>> 0;
 						break;
 				}
 				rawMask = (rawMask >>> startbit) >>> 0;
