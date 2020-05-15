@@ -24,41 +24,41 @@ function limit(lo, val, hi) {
 }
 		
 function fromSigned(resolution, num, raw2Complement) {
-	let _mask = 0x8000;
-	let _sub = 0x10000;
+	let _mask = Math.pow(2,15) >>> 0;
+	let _sub = Math.pow(2,16) >>> 0;
 	
 	switch(resolution){
 		case "4_Bit":
-			_mask = 0x8;
-			_sub = 0x10;
+			_mask = Math.pow(2,3) >>> 0;
+			_sub = Math.pow(2,4) >>> 0;
 			break;
 		case "8_Bit":
-			_mask = 0x80;
-			_sub = 0x100;
+			_mask = Math.pow(2,7) >>> 0;
+			_sub = Math.pow(2,8) >>> 0;
 			break;
 		case "12_Bit":
-			_mask = 0x800;
-			_sub = 0x1000;
+			_mask = Math.pow(2,11) >>> 0;
+			_sub = Math.pow(2,12) >>> 0;
 			break;
 		case "16_Bit":
-			_mask = 0x8000;
-			_sub = 0x10000;
+			_mask = Math.pow(2,15) >>> 0;
+			_sub = Math.pow(2,16) >>> 0;
 			break;
 		case "20_Bit":
-			_mask = 0x80000;
-			_sub = 0x100000;
+			_mask = Math.pow(2,19) >>> 0;
+			_sub = Math.pow(2,20) >>> 0;
 			break;
 		case "24_Bit":
-			_mask = 0x800000;
-			_sub = 0x1000000;
+			_mask = Math.pow(2,23) >>> 0;
+			_sub = Math.pow(2,24) >>> 0;
 			break;
 		case "28_Bit":
-			_mask = 0x8000000;
-			_sub = 0x10000000;
+			_mask = Math.pow(2,27) >>> 0;
+			_sub = Math.pow(2,28) >>> 0;
 			break;
 		case "32_Bit":
-			_mask = 0x80000000;
-			_sub = 0x100000000;
+			_mask = Math.pow(2,31) >>> 0;
+			_sub = Math.pow(2,32) >>> 0;
 			break;
 	}
 	
@@ -74,41 +74,41 @@ function fromSigned(resolution, num, raw2Complement) {
 }
 
 function toSigned(resolution, num, raw2Complement) {
-	let _mask = 0x8000;
-	let _sub = 0x10000;
+	let _mask = Math.pow(2,15) >>> 0;
+	let _sub = Math.pow(2,16) >>> 0;
 	
 	switch(resolution){
 		case "4_Bit":
-			_mask = 0x8;
-			_sub = 0x10;
+			_mask = Math.pow(2,3) >>> 0;
+			_sub = Math.pow(2,4) >>> 0;
 			break;
 		case "8_Bit":
-			_mask = 0x80;
-			_sub = 0x100;
+			_mask = Math.pow(2,7) >>> 0;
+			_sub = Math.pow(2,8) >>> 0;
 			break;
 		case "12_Bit":
-			_mask = 0x800;
-			_sub = 0x1000;
+			_mask = Math.pow(2,11) >>> 0;
+			_sub = Math.pow(2,12) >>> 0;
 			break;
 		case "16_Bit":
-			_mask = 0x8000;
-			_sub = 0x10000;
+			_mask = Math.pow(2,15) >>> 0;
+			_sub = Math.pow(2,16) >>> 0;
 			break;
 		case "20_Bit":
-			_mask = 0x80000;
-			_sub = 0x100000;
+			_mask = Math.pow(2,19) >>> 0;
+			_sub = Math.pow(2,20) >>> 0;
 			break;
 		case "24_Bit":
-			_mask = 0x800000;
-			_sub = 0x1000000;
+			_mask = Math.pow(2,23) >>> 0;
+			_sub = Math.pow(2,24) >>> 0;
 			break;
 		case "28_Bit":
-			_mask = 0x8000000;
-			_sub = 0x10000000;
+			_mask = Math.pow(2,27) >>> 0;
+			_sub = Math.pow(2,28) >>> 0;
 			break;
 		case "32_Bit":
-			_mask = 0x80000000;
-			_sub = 0x100000000;
+			_mask = Math.pow(2,31) >>> 0;
+			_sub = Math.pow(2,32) >>> 0;
 			break;
 	}
 	

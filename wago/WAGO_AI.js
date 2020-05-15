@@ -313,28 +313,28 @@ module.exports = function(RED) {
 				rawMask = 0xFFFF >>> 0;
 				switch(resolution) {
 					case "8_Bit":
-						rawMask = 0x00FF >>> 0;
+						rawMask = (Math.pow(2,8) - 1) >>> 0;
 						break;
 					case "12_Bit":
-						rawMask = 0x0FFF >>> 0;
+						rawMask = (Math.pow(2,12) - 1) >>> 0;
 						break;
 					case "16_Bit":
-						rawMask = 0xFFFF >>> 0;
+						rawMask = (Math.pow(2,16) - 1) >>> 0;
 						break;
 					case "20_Bit":
-						rawMask = 0xFFFFF >>> 0;
+						rawMask = (Math.pow(2,20) - 1) >>> 0;
 						break;
 					case "24_Bit":
-						rawMask = 0xFFFFFF >>> 0;
+						rawMask = (Math.pow(2,24) - 1) >>> 0;
 						break;
 					case "28_Bit":
-						rawMask = 0xFFFFFFF >>> 0;
+						rawMask = (Math.pow(2,28) - 1) >>> 0;
 						break;
 					case "32_Bit":
-						rawMask = 0xFFFFFFFF >>> 0;
+						rawMask = (Math.pow(2,32) - 1) >>> 0;
 						break;
 					default:
-						rawMask = 0xFFFF >>> 0;
+						rawMask = (Math.pow(2,16) - 1) >>> 0;
 						break;
 				}
 				rawMask = (rawMask << startbit) >>> 0;
