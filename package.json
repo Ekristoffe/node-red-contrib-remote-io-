@@ -25,11 +25,20 @@
 			"DALI": "wago/WAGO_753_647.js",
 			"PowerMeasurement": "wago/WAGO_750_49X.js"
 		}
-	}
-	"author": [
-		"Jesse James Cox <jess.coxpdx@gmail.com> (http://example.com)",
-		"Kurtl Braun <kurt_braun@hotmail.com> (http://example.com)",
-		"Christophe Icard <aidasan@hotmail.fr> (http://example.com)"
+	},
+	"author": {
+		"name" : "Jesse James Cox",
+		"url" : "https://github.com/jessejamescox"
+	},
+	"contributors": [
+		{
+			"name" : "Kurt Braun",
+			"url" : "https://github.com/braunku"
+		},
+		{
+			"name" : "Christophe Icard",
+			"url" : "https://github.com/Ekristoffe/"
+		}
 	],
 	"license": "MIT"
 }
