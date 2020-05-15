@@ -14,9 +14,9 @@ module.exports = function(RED) {
 		for (var i = 0; i <= wordOffset; i++) {
 			_data[i] = 0;
 		}
-		context.set('data', _data);
+		context.set("data", _data);
 
-		this.on('input', function(msg) {
+		this.on("input", function(msg) {
 			var _object = [];
 			var str = msg.topic;
 			var n = str.indexOf(".");
@@ -36,13 +36,13 @@ module.exports = function(RED) {
 					_bitPosition = _bitPosition + bitOffset;
 				}
 				// get the context value
-				var _data = context.get('data') || [];
+				var _data = context.get("data") || [];
 				// clear the right bit in the output payload
 				_data[_wordOffset] = _data[_wordOffset] & ~(1 << _bitPosition);
 				// copy the receive bit in the output payload
 				_data[_wordOffset] = _data[_wordOffset] | (_bitValue << _bitPosition);
 				// store the context value back
-				context.set('data', _data);
+				context.set("data", _data);
 				_payload_Word = _data;
 				
 				

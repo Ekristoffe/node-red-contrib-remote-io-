@@ -25,7 +25,7 @@ module.exports = function(RED) {
 		for (var i = 0; i <= wordOffset; i++) {
 			_data[i] = 0;
 		}
-		context.set('data', _data);
+		context.set("data", _data);
 		
 		switch(module) {
 			case "750-550":
@@ -208,7 +208,7 @@ module.exports = function(RED) {
 		}
 		
 		function toFixed(num, precision) {
-			return (+(Math.round(+(num + 'e' + precision)) + 'e' + -precision)).toFixed(precision);
+			return (+(Math.round(+(num + "e" + precision)) + "e" + -precision)).toFixed(precision);
 		}
 		
 		function fromSigned(_num) {
@@ -260,7 +260,7 @@ module.exports = function(RED) {
 			return _num;
 		}
 		
-		this.on('input', function(msg) {
+		this.on("input", function(msg) {
 			var _object = [];
 			var _rawOutput = 0;
 			var _rawValue = parseInt(msg.payload,10);
@@ -283,11 +283,11 @@ module.exports = function(RED) {
 					break;
 			}
 			// get the context value
-			var _data = context.get('data') || [];
+			var _data = context.get("data") || [];
 			// copy the output payload
 			_data[wordOffset] = _rawOutput;
 			// store the context value back
-			context.set('data', _data);
+			context.set("data", _data);
 			_object[0] = {topic:topic,payload:_rawOutput};
 			_object[1] = {topic:topic,payload:_data};
 			node.send([_object[0], _object[1]]);

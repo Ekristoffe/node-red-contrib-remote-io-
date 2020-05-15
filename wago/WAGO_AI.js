@@ -365,7 +365,7 @@ module.exports = function(RED) {
 		}
 		
 		function toFixed(num, precision) {
-			return (+(Math.round(+(num + 'e' + precision)) + 'e' + -precision)).toFixed(precision);
+			return (+(Math.round(+(num + "e" + precision)) + "e" + -precision)).toFixed(precision);
 		}
 		
 		function toSigned(_num) {
@@ -417,7 +417,7 @@ module.exports = function(RED) {
 			return _num;
 		}
 		
-		this.on('input', function(msg) {
+		this.on("input", function(msg) {
 			var _object;
 			var _rawInput = 0
 			// Test is we have an array as input

@@ -3,7 +3,7 @@ module.exports = function(RED) {
         RED.nodes.createNode(this,config);
         var context = this.context();
         var node = this;
-        this.on('input', function(msg) {
+        this.on("input", function(msg) {
 
         var mbOutData = {payload: [0,0,0,0]};
         var mbInData = msg;
@@ -12,22 +12,22 @@ module.exports = function(RED) {
         
         var statusColor;
         
-        var getDataState = context.get('getDataState')||1;
+        var getDataState = context.get("getDataState")||1;
         
         var voltsHold = [];
-        var voltsL1 = context.get('voltsL1')||0;
-        var voltsL2 = context.get('voltsL2')||0;
-        var voltsL3 = context.get('voltsL3')||0;
+        var voltsL1 = context.get("voltsL1")||0;
+        var voltsL2 = context.get("voltsL2")||0;
+        var voltsL3 = context.get("voltsL3")||0;
         
         var ampresHold = [];
-        var ampresL1 = context.get('ampresL1')||0;
-        var ampresL2 = context.get('ampresL2')||0;
-        var ampresL3 = context.get('ampresL3')||0;
+        var ampresL1 = context.get("ampresL1")||0;
+        var ampresL2 = context.get("ampresL2")||0;
+        var ampresL3 = context.get("ampresL3")||0;
         
         var freqHold = [];
-        var freqL1 = context.get('freqL1')||0;
-        var freqL2 = context.get('freqL2')||0;
-        var freqL3 = context.get('freqL3')||0;
+        var freqL1 = context.get("freqL1")||0;
+        var freqL2 = context.get("freqL2")||0;
+        var freqL3 = context.get("freqL3")||0;
         
         
         mbOutData.payload[0] = "0";      // no reg comms and L1 measure
@@ -61,9 +61,9 @@ module.exports = function(RED) {
                 voltsL1 = {payload: voltsHold[0].toString() / 100};
                 voltsL2 = {payload: voltsHold[1].toString() / 100};
                 voltsL3 = {payload: voltsHold[2].toString() / 100};
-                context.set('voltsL1', voltsL1);
-                context.set('voltsL2', voltsL2);
-                context.set('voltsL3', voltsL3);
+                context.set("voltsL1", voltsL1);
+                context.set("voltsL2", voltsL2);
+                context.set("voltsL3", voltsL3);
                 getDataState = 2;
             }
             // current 
@@ -75,9 +75,9 @@ module.exports = function(RED) {
                 ampresL1 = {payload: ampresHold[0].toString() / 1000};
                 ampresL2 = {payload: ampresHold[1].toString() / 1000};
                 ampresL3 = {payload: ampresHold[2].toString() / 1000};
-                context.set('ampresL1', ampresL1);
-                context.set('ampresL2', ampresL2);
-                context.set('ampresL3', ampresL3);
+                context.set("ampresL1", ampresL1);
+                context.set("ampresL2", ampresL2);
+                context.set("ampresL3", ampresL3);
                 getDataState = 3;
             }
             // frequency
@@ -89,13 +89,13 @@ module.exports = function(RED) {
                 freqL1 = {payload: freqHold[0].toString() / 1000};
                 freqL2 = {payload: freqHold[1].toString() / 1000};
                 freqL3 = {payload: freqHold[2].toString() / 1000};
-                context.set('freqL1', freqL1);
-                context.set('freqL2', freqL2);
-                context.set('freqL3', freqL3);
+                context.set("freqL1", freqL1);
+                context.set("freqL2", freqL2);
+                context.set("freqL3", freqL3);
                 getDataState = 1;
     }
         node.status({fill: statusColor,shape: "ring",text: diagMsg.payload});
-        context.set('getDataState', getDataState);
+        context.set("getDataState", getDataState);
         node.send([diagMsg, mbOutData, voltsL1, voltsL2, voltsL3, ampresL1, ampresL2, ampresL3, freqL1, freqL2, freqL3]);
         
         });

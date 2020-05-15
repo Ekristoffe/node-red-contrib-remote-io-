@@ -13,10 +13,10 @@ module.exports = function(RED) {
 		var topic = n.topic;
 		
 		function toFixed(num, precision) {
-			return (+(Math.round(+(num + 'e' + precision)) + 'e' + -precision)).toFixed(precision);
+			return (+(Math.round(+(num + "e" + precision)) + "e" + -precision)).toFixed(precision);
 		}
 		
-		this.on('input', function(msg) {
+		this.on("input", function(msg) {
 			var _object;
 			var _rawInput = 0
 			// Test is we have an array as input

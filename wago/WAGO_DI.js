@@ -10,7 +10,7 @@ module.exports = function(RED) {
 		var name = n.name;
 		var topic = n.topic;
 
-		this.on('input', function(msg) {
+		this.on("input", function(msg) {
 			var _object = [];
 			// Test is we have an array as input
 			if (msg.payload.constructor === Array) {
