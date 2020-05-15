@@ -4,7 +4,7 @@ module.exports = function(RED) {
     function specialDALI(n) {
        RED.nodes.createNode(this,n);
        var node = this;
-       var bitSize = parseInt(n.inputs);
+       var bitSize = parseInt(n.inputs,10);
        var bitOffset = n.offset;
 
         this.on('output', function(msg) {

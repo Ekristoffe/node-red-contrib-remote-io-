@@ -55,9 +55,9 @@ module.exports = function(RED) {
             // voltage
             if ((mbInData.payload[2] == "1284") && (mbInData.payload[3] == "6"))  {
                 diagMsg = {payload: "getting voltage"};
-                voltsHold[0] = parseInt(mbInData.payload[4] + (mbInData.payload[5] << 8));
-                voltsHold[1] = parseInt(mbInData.payload[6] + (mbInData.payload[7] << 8));
-                voltsHold[2] = parseInt(mbInData.payload[8] + (mbInData.payload[9] << 8));
+                voltsHold[0] = parseInt(mbInData.payload[4] + (mbInData.payload[5] << 8),10);
+                voltsHold[1] = parseInt(mbInData.payload[6] + (mbInData.payload[7] << 8),10);
+                voltsHold[2] = parseInt(mbInData.payload[8] + (mbInData.payload[9] << 8),10);
                 voltsL1 = {payload: voltsHold[0].toString() / 100};
                 voltsL2 = {payload: voltsHold[1].toString() / 100};
                 voltsL3 = {payload: voltsHold[2].toString() / 100};
@@ -69,9 +69,9 @@ module.exports = function(RED) {
             // current 
             if ((mbInData.payload[2] == "513") && (mbInData.payload[3] == "3"))  {
                 diagMsg = {payload: "getting current"};
-                ampresHold[0] = parseInt(mbInData.payload[4] + (mbInData.payload[5] << 8));
-                ampresHold[1] = parseInt(mbInData.payload[6] + (mbInData.payload[7] << 8));
-                ampresHold[2] = parseInt(mbInData.payload[8] + (mbInData.payload[9] << 8));
+                ampresHold[0] = parseInt(mbInData.payload[4] + (mbInData.payload[5] << 8),10);
+                ampresHold[1] = parseInt(mbInData.payload[6] + (mbInData.payload[7] << 8),10);
+                ampresHold[2] = parseInt(mbInData.payload[8] + (mbInData.payload[9] << 8),10);
                 ampresL1 = {payload: ampresHold[0].toString() / 1000};
                 ampresL2 = {payload: ampresHold[1].toString() / 1000};
                 ampresL3 = {payload: ampresHold[2].toString() / 1000};
@@ -83,9 +83,9 @@ module.exports = function(RED) {
             // frequency
             if ((mbInData.payload[2] == "4368") && (mbInData.payload[3] == "18"))  {
                 diagMsg = {payload: "getting frequency"};
-                freqHold[0] = parseInt(mbInData.payload[4] + (mbInData.payload[5] << 8));
-                freqHold[1] = parseInt(mbInData.payload[6] + (mbInData.payload[7] << 8));
-                freqHold[2] = parseInt(mbInData.payload[8] + (mbInData.payload[9] << 8));
+                freqHold[0] = parseInt(mbInData.payload[4] + (mbInData.payload[5] << 8),10);
+                freqHold[1] = parseInt(mbInData.payload[6] + (mbInData.payload[7] << 8),10);
+                freqHold[2] = parseInt(mbInData.payload[8] + (mbInData.payload[9] << 8),10);
                 freqL1 = {payload: freqHold[0].toString() / 1000};
                 freqL2 = {payload: freqHold[1].toString() / 1000};
                 freqL3 = {payload: freqHold[2].toString() / 1000};

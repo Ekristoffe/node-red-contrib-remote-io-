@@ -5,20 +5,20 @@ module.exports = function(RED) {
 		RED.nodes.createNode(this,n);
 		//var context = this.context();
 		var node = this;
-		var wordOffset = parseInt(n.wordOffset);
+		var wordOffset = parseInt(n.wordOffset,10);
 		var module = n.module;
 		var outputData = n.outputData;
-		var outputPrecision = parseInt(n.outputPrecision);
-		var rawLow = parseInt(n.rawLow);
-		var rawHigh = parseInt(n.rawHigh);
+		var outputPrecision = parseInt(n.outputPrecision,10);
+		var rawLow = parseInt(n.rawLow,10);
+		var rawHigh = parseInt(n.rawHigh,10);
 		var rawMask = 0xFFFF;
 		var raw2Complement = n.raw2Complement;
 		var resolution = n.resolution;
-		var startbit = parseInt(n.startbit);
-		var signalLow = parseInt(n.signalLow);
-		var signalHigh = parseInt(n.signalHigh);
-		var sensorLow = parseInt(n.sensorLow);
-		var sensorHigh = parseInt(n.sensorHigh);
+		var startbit = parseInt(n.startbit,10);
+		var signalLow = parseInt(n.signalLow,10);
+		var signalHigh = parseInt(n.signalHigh,10);
+		var sensorLow = parseInt(n.sensorLow,10);
+		var sensorHigh = parseInt(n.sensorHigh,10);
 		var name = n.name;
 		var topic = n.topic;
 		
@@ -422,9 +422,9 @@ module.exports = function(RED) {
 			var _rawInput = 0
 			// Test is we have an array as input
 			if (msg.payload.constructor === Array) {
-				_rawInput = parseInt(msg.payload[wordOffset]);
+				_rawInput = parseInt(msg.payload[wordOffset],10);
 			} else {
-				_rawInput = parseInt(msg.payload);
+				_rawInput = parseInt(msg.payload,10);
 			}
 			// convert the raw data to signed data
 			var _rawValue = toSigned(_rawInput);

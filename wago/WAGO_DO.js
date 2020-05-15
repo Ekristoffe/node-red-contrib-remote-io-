@@ -5,8 +5,8 @@ module.exports = function(RED) {
 		RED.nodes.createNode(this,n);
 		var context = this.context();
 		var node = this;
-		var wordOffset = parseInt(n.wordOffset);
-		var bitOffset = parseInt(n.bitOffset);
+		var wordOffset = parseInt(n.wordOffset,10);
+		var bitOffset = parseInt(n.bitOffset,10);
 		var name = n.name;
 		var topic = n.topic;
 		// Init the array of data

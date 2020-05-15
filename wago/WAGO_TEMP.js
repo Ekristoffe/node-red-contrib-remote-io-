@@ -5,7 +5,7 @@ module.exports = function(RED) {
 		RED.nodes.createNode(this,n);
 		//var context = this.context();
 		var node = this;
-		var wordOffset = parseInt(n.wordOffset);
+		var wordOffset = parseInt(n.wordOffset,10);
 		var sensorType = n.sensorType;
 		var signalType = n.signalType;
 		//this.signalType = n.signalType;
@@ -21,9 +21,9 @@ module.exports = function(RED) {
 			var _rawInput = 0
 			// Test is we have an array as input
 			if (msg.payload.constructor === Array) {
-				_rawInput = parseInt(msg.payload[wordOffset]);
+				_rawInput = parseInt(msg.payload[wordOffset],10);
 			} else {
-				_rawInput = parseInt(msg.payload);
+				_rawInput = parseInt(msg.payload,10);
 			}
 			
 			var celciusTemp = (_rawInput / 10);

@@ -4,9 +4,9 @@ module.exports = function(RED) {
 	function digitalInput(n) {
 		RED.nodes.createNode(this,n);
 		var node = this;
-		var bitSize = parseInt(n.outputs);
-		var wordOffset = parseInt(n.wordOffset);
-		var bitOffset = parseInt(n.bitOffset);
+		var bitSize = parseInt(n.outputs,10);
+		var wordOffset = parseInt(n.wordOffset,10);
+		var bitOffset = parseInt(n.bitOffset,10);
 		var name = n.name;
 		var topic = n.topic;
 

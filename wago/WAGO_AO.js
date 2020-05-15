@@ -5,19 +5,19 @@ module.exports = function(RED) {
 		RED.nodes.createNode(this,n);
 		var context = this.context();
 		var node = this;
-		var wordOffset = parseInt(n.wordOffset);
+		var wordOffset = parseInt(n.wordOffset,10);
 		var module = n.module;
 		var inputData = n.inputData;
-		var sensorLow = parseInt(n.sensorLow);
-		var sensorHigh = parseInt(n.sensorHigh);
-		var signalLow = parseInt(n.signalLow);
-		var signalHigh = parseInt(n.signalHigh);
-		var rawLow = parseInt(n.rawLow);
-		var rawHigh = parseInt(n.rawHigh);
+		var sensorLow = parseInt(n.sensorLow,10);
+		var sensorHigh = parseInt(n.sensorHigh,10);
+		var signalLow = parseInt(n.signalLow,10);
+		var signalHigh = parseInt(n.signalHigh,10);
+		var rawLow = parseInt(n.rawLow,10);
+		var rawHigh = parseInt(n.rawHigh,10);
 		var rawMask = 0xFFFF;
 		var raw2Complement = n.raw2Complement;
 		var resolution = n.resolution;
-		var startbit = parseInt(n.startbit);
+		var startbit = parseInt(n.startbit,10);
 		var name = n.name;
 		var topic = n.topic;
 		// Init the array of data
@@ -263,7 +263,7 @@ module.exports = function(RED) {
 		this.on('input', function(msg) {
 			var _object = [];
 			var _rawOutput = 0;
-			var _rawValue = parseInt(msg.payload);
+			var _rawValue = parseInt(msg.payload,10);
 			
 			// operation based on outputData
 			switch(inputData) {
