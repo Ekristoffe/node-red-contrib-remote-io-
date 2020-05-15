@@ -199,7 +199,7 @@ module.exports = function(RED) {
 					break;
 				case "Signal":
 					_rawOutput = wagoFunctions.scale(_rawValue, signalLow, signalHigh, rawLow, rawHigh);
-					_rawOutput = wagoFunctions.fromSigned(wresolution, wagoFunctions.toFixed(_rawOutput, 0), raw2Complement);
+					_rawOutput = wagoFunctions.fromSigned(resolution, wagoFunctions.toFixed(_rawOutput, 0), raw2Complement);
 					break;
 				case "Sensor":
 					_rawOutput = wagoFunctions.scale(_rawValue, sensorLow, sensorHigh, rawLow, rawHigh);
