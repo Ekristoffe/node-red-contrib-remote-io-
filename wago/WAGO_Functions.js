@@ -23,7 +23,7 @@ function limit(lo, val, hi) {
 	}
 }
 		
-function fromSigned(num, raw2Complement) {
+function fromSigned(resolution, num, raw2Complement) {
 	let _mask = 0x8000;
 	let _sub = 0x10000;
 	
@@ -73,7 +73,7 @@ function fromSigned(num, raw2Complement) {
 	return _num;
 }
 
-function toSigned(num, raw2Complement) {
+function toSigned(resolution, num, raw2Complement) {
 	let _mask = 0x8000;
 	let _sub = 0x10000;
 	

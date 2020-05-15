@@ -357,7 +357,7 @@ module.exports = function(RED) {
 				_rawInput = parseInt(msg.payload,10);
 			}
 			// convert the raw data to signed data
-			var _rawValue = wagoFunctions.toSigned(_rawInput, raw2Complement);
+			var _rawValue = wagoFunctions.toSigned(resolution, _rawInput, raw2Complement);
 			
 			// operation based on outputData
 			switch(outputData) {
