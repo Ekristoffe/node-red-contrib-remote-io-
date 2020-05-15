@@ -18,10 +18,12 @@ module.exports = function(RED) {
 		
 		this.on("input", function(msg) {
 			var _object;
-			var _rawInput = 0
+			var _rawInput = 0;
 			// Test is we have an array as input
 			if (msg.payload.constructor === Array) {
-				_rawInput = parseInt(msg.payload[wordOffset],10);
+				if (wordOffset >= 0) && (wordOffset <= msg.payload.length) {
+					_rawInput = parseInt(msg.payload[wordOffset],10);
+				}
 			} else {
 				_rawInput = parseInt(msg.payload,10);
 			}
