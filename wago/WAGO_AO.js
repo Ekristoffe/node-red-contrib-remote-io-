@@ -22,6 +22,10 @@ module.exports = function(RED) {
 		var topic = n.topic;
 		// Init the array of data
 		var _data = [];
+		if (wordOffset < 0) 
+			wordOffset = 0;
+		if (wordOffset > msg.payload.length)
+			wordOffset = msg.payload.length;
 		for (var i = 0; i <= wordOffset; i++) {
 			_data[i] = 0;
 		}
