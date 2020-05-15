@@ -1,3 +1,5 @@
+let wagoFunctions = require("./WAGO_Functions");
+
 module.exports = function(RED) {
 	"use strict";
 
@@ -364,10 +366,6 @@ module.exports = function(RED) {
 			}
 		}
 		
-		function toFixed(num, precision) {
-			return (+(Math.round(+(num + "e" + precision)) + "e" + -precision)).toFixed(precision);
-		}
-		
 		function toSigned(_num) {
 			var _mask = 0x8000;
 			var _sub = 0x10000;
@@ -442,12 +440,12 @@ module.exports = function(RED) {
 					break;
 				case "Signal":
 					var _signalValue = scale(_rawValue, rawLow, rawHigh, signalLow, signalHigh);
-					_signalValue = parseFloat(toFixed(_signalValue, outputPrecision));
+					_signalValue = parseFloat(wagoFunctions.toFixed(_signalValue, outputPrecision));
 					_object = {topic:topic,payload:_signalValue};
 					break;
 				case "Sensor":
 					var _sensorValue = scale(_rawValue, rawLow, rawHigh, sensorLow, sensorHigh);
-					_sensorValue = parseFloat(toFixed(_sensorValue, outputPrecision));
+					_sensorValue = parseFloat(wagoFunctions.toFixed(_sensorValue, outputPrecision));
 					_object = {topic:topic,payload:_sensorValue};
 					break;
 				default:

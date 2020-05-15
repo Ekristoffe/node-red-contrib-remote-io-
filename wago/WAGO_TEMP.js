@@ -1,3 +1,5 @@
+let wagoFunctions = require("./WAGO_Functions");
+
 module.exports = function(RED) {
 	"use strict";
 
@@ -11,10 +13,6 @@ module.exports = function(RED) {
 		//this.signalType = n.signalType;
 		var name = n.name;
 		var topic = n.topic;
-		
-		function toFixed(num, precision) {
-			return (+(Math.round(+(num + "e" + precision)) + "e" + -precision)).toFixed(precision);
-		}
 		
 		this.on("input", function(msg) {
 			var _object;
@@ -37,16 +35,16 @@ module.exports = function(RED) {
 			// operation based on signalType
 			switch(signalType) {
 				case "Celsius":
-					_object = {topic:topic,payload:toFixed(celciusTemp, 2)};
+					_object = {topic:topic,payload:wagoFunctions.toFixed(celciusTemp, 2)};
 					break;
 				case "Farenheit":
-					_object = {topic:topic,payload:toFixed((((celciusTemp * 9) / 5) + 32), 2)};
+					_object = {topic:topic,payload:wagoFunctions.toFixed((((celciusTemp * 9) / 5) + 32), 2)};
 					break;
 				case "Kelvin":
-					_object = {topic:topic,payload:toFixed((celciusTemp + 273.15), 2)};
+					_object = {topic:topic,payload:wagoFunctions.toFixed((celciusTemp + 273.15), 2)};
 					break;
 				default:
-					_object = {topic:topic,payload:toFixed(celciusTemp, 2)};
+					_object = {topic:topic,payload:wagoFunctions.toFixed(celciusTemp, 2)};
 					break;
 			}
 			node.send(_object);
