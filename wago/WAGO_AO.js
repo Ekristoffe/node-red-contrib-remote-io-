@@ -1,5 +1,4 @@
 const wagoFunctions = require("./WAGO_Functions");
-const math			= require("util");
 
 module.exports = function(RED) {
 	"use strict";
