@@ -1,31 +1,31 @@
 // scales number (the scaled number can be outside the range of point A and B)
-function scale(_x, _xA, _xB, _yA, _yB) {
+function scale(x, xA, xB, yA, yB) {
 	// find the slope m
-	var _m = (_yB - _yA) / (_xB - _xA);
+	let _m = (yB - yA) / (xB - xA);
 	// find the intercept p
-	var _p = _yA - (_m * _xA);
+	let _p = yA - (_m * xA);
 	// calculate the y
-	var _y = (_m * _x) + _p;
+	let _y = (_m * x) + _p;
 	
 	return(_y);
 }
 
 // limit number
-function limit(_lo, _val, _hi) {
-	if (_val < _lo) {
-		return(_lo);
+function limit(lo, val, hi) {
+	if (val < lo) {
+		return(lo);
 	} else {
-		if (_val > _hi) {
-			return(_hi);
+		if (val > hi) {
+			return(hi);
 		} else {
-			return(_val);
+			return(val);
 		}
 	}
 }
 		
-function fromSigned(_num) {
-	var _mask = 0x8000;
-	var _sub = 0x10000;
+function fromSigned(num, raw2Complement) {
+	let _mask = 0x8000;
+	let _sub = 0x10000;
 	
 	switch(resolution){
 		case "4_Bit":
@@ -62,19 +62,20 @@ function fromSigned(_num) {
 			break;
 	}
 	
-	if (_num < 0) {
+	let _num = num;
+	if (num < 0) {
 		if (raw2Complement !== false) {
-			_num = _num + _sub;
+			_num = num + _sub;
 		} else {
-			_num = (_num & ~_mask) * -1;
+			_num = (num & ~_mask) * -1;
 		}
 	}
 	return _num;
 }
 
-function toSigned(_num) {
-	var _mask = 0x8000;
-	var _sub = 0x10000;
+function toSigned(num, raw2Complement) {
+	let _mask = 0x8000;
+	let _sub = 0x10000;
 	
 	switch(resolution){
 		case "4_Bit":
@@ -111,11 +112,12 @@ function toSigned(_num) {
 			break;
 	}
 	
-	if ((_num & _mask) !== 0) {
+	let _num = num;
+	if ((num & _mask) !== 0) {
 		if (raw2Complement !== false) {
-			_num = _num - _sub;
+			_num = num - _sub;
 		} else {
-			_num = (_num & ~_mask) * -1;
+			_num = (num & ~_mask) * -1;
 		}
 	}
 	return _num;
