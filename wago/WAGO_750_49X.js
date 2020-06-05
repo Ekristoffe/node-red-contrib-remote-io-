@@ -7,8 +7,14 @@ module.exports = function(RED) {
 
         var mbOutData = {payload: [0,0,0,0]};
         var mbInData = msg;
+
+        var topic = config.topic;
+
+        var outData = {};
+
+        var testInput = config;
         
-        var diagMsg = "I'm Waiting";
+        var diagMsg = "Im Waiting";
         
         var statusColor;
         
@@ -58,9 +64,9 @@ module.exports = function(RED) {
                 voltsHold[0] = parseInt(mbInData.payload[4] + (mbInData.payload[5] << 8));
                 voltsHold[1] = parseInt(mbInData.payload[6] + (mbInData.payload[7] << 8));
                 voltsHold[2] = parseInt(mbInData.payload[8] + (mbInData.payload[9] << 8));
-                voltsL1 = {topic: "volts_L1", payload: voltsHold[0].toString() / 100};
-                voltsL2 = {topic: "volts_L2", payload: voltsHold[1].toString() / 100};
-                voltsL3 = {topic: "volts_L3", payload: voltsHold[2].toString() / 100};
+                voltsL1 = {value: voltsHold[0].toString() / 100};
+                voltsL2 = {value: voltsHold[1].toString() / 100};
+                voltsL3 = {value: voltsHold[2].toString() / 100};
                 context.set('voltsL1', voltsL1);
                 context.set('voltsL2', voltsL2);
                 context.set('voltsL3', voltsL3);
@@ -72,9 +78,9 @@ module.exports = function(RED) {
                 ampresHold[0] = parseInt(mbInData.payload[4] + (mbInData.payload[5] << 8));
                 ampresHold[1] = parseInt(mbInData.payload[6] + (mbInData.payload[7] << 8));
                 ampresHold[2] = parseInt(mbInData.payload[8] + (mbInData.payload[9] << 8));
-                ampresL1 = {topic: "ampres_L1", payload: ampresHold[0].toString() / 1000};
-                ampresL2 = {topic: "ampres_L2", payload: ampresHold[1].toString() / 1000};
-                ampresL3 = {topic: "ampres_L3", payload: ampresHold[2].toString() / 1000};
+                ampresL1 = {value: ampresHold[0].toString() / 1000};
+                ampresL2 = {value: ampresHold[1].toString() / 1000};
+                ampresL3 = {value: ampresHold[2].toString() / 1000};
                 context.set('ampresL1', ampresL1);
                 context.set('ampresL2', ampresL2);
                 context.set('ampresL3', ampresL3);
@@ -86,9 +92,9 @@ module.exports = function(RED) {
                 freqHold[0] = parseInt(mbInData.payload[4] + (mbInData.payload[5] << 8));
                 freqHold[1] = parseInt(mbInData.payload[6] + (mbInData.payload[7] << 8));
                 freqHold[2] = parseInt(mbInData.payload[8] + (mbInData.payload[9] << 8));
-                freqL1 = {topic: "freq_L1", payload: freqHold[0].toString() / 1000};
-                freqL2 = {topic: "freq_L2", payload: freqHold[1].toString() / 1000};
-                freqL3 = {topic: "freq_L3", payload: freqHold[2].toString() / 1000};
+                freqL1 = {value: freqHold[0].toString() / 1000};
+                freqL2 = {value: freqHold[1].toString() / 1000};
+                freqL3 = {value: freqHold[2].toString() / 1000};
                 context.set('freqL1', freqL1);
                 context.set('freqL2', freqL2);
                 context.set('freqL3', freqL3);
@@ -96,8 +102,10 @@ module.exports = function(RED) {
     }
         node.status({fill: statusColor,shape: "ring",text: diagMsg.payload});
         context.set('getDataState', getDataState);
-        var outData = {payload: {voltage: [voltsL1.payload, voltsL2.payload, voltsL3.payload], current: [ampresL1.payload, ampresL2.payload, ampresL3.payload], frequency: [freqL1.payload, freqL2.payload, freqL3.payload]}};
-        node.send([diagMsg, mbOutData, voltsL1, voltsL2, voltsL3, ampresL1, ampresL2, ampresL3, freqL1, freqL2, freqL3, outData]);
+
+        outData.topic = topic;
+        outData.payload = {L1: {voltage: voltsL1.value, current: ampresL1.value, frequency: freqL1.value}, L2: {voltage: voltsL2.value, current: ampresL2.value, frequency: freqL2.value}, L3: {voltage: voltsL3.value, current: ampresL3.value, frequency: freqL3.value}};
+        node.send([mbOutData, outData]);
         
         });
     }

@@ -3,13 +3,15 @@
         category: 'remote io',
         color: '#EBEDEC',
         defaults: {
-            name: {value:""}
+            name: {value:""},
+            topic: {topic:""}
         },
         inputs:1,
-        outputs:12,
+        outputs:2,
         icon: "iconSP.png",
         label: function() {
             return this.name||"Power Measurement";
+            return this.topic||"topic";
         }
     });
 </script>
