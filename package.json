@@ -1,50 +1,17 @@
 {
-  "_from": "node-red-contrib-remote-io@3.0.0",
-  "_id": "node-red-contrib-remote-io@3.0.0",
-  "_inBundle": false,
-  "_integrity": "sha512-8QZhTxp8LD8hhkSmkUfV/ftHcaGfBl4LPMnupcFwUH6pU4nlPLyHzL19MunvCbMHydAi6r6KvE88DuWIzBbv0Q==",
-  "_location": "/node-red-contrib-remote-io",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "node-red-contrib-remote-io@3.0.0",
-    "name": "node-red-contrib-remote-io",
-    "escapedName": "node-red-contrib-remote-io",
-    "rawSpec": "3.0.0",
-    "saveSpec": null,
-    "fetchSpec": "3.0.0"
-  },
-  "_requiredBy": [
-    "#USER",
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/node-red-contrib-remote-io/-/node-red-contrib-remote-io-3.0.0.tgz",
-  "_shasum": "cdb907153af5c018d4ad0d1254a244fc3578f117",
-  "_spec": "node-red-contrib-remote-io@3.0.0",
-  "_where": "/data",
-  "bundleDependencies": false,
-  "dependencies": {},
-  "deprecated": false,
-  "description": "A sample node for node-red",
-  "keywords": [
-    "node-red",
-    "wago",
-    "modbus",
-    "750",
-    "Thermocouple",
-    "Power Measurement"
-  ],
-  "name": "node-red-contrib-remote-io",
-  "node-red": {
-    "nodes": {
-      "DigitalIn": "wago/WAGO_DI.js",
-      "AnalogIn": "wago/WAGO_AI.js",
-      "Temp": "wago/WAGO_TEMP.js",
-      "AnalogOut": "wago/WAGO_AO.js",
-      "Power": "wago/WAGO_750_49X.js"
+    "name"         : "node-red-contrib-remote-io",
+    "version"      : "3.1.0",
+    "description"  : "A sample node for node-red",
+    "dependencies": {
+    },
+    "keywords": [ "node-red" , "wago", "modbus", "750" , "Thermocouple", "Power Measurement"],
+    "node-red"     : {
+        "nodes": {
+            "DigitalIn": "wago/WAGO_DI.js",
+            "AnalogIn": "wago/WAGO_AI.js",
+            "Temp": "wago/WAGO_TEMP.js",
+	        "AnalogOut": "wago/WAGO_AO.js",
+       	    "Power": "wago/WAGO_750_49X.js"
+        }
     }
-  },
-  "version": "3.0.0"
 }
-
