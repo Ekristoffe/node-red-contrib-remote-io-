@@ -4,7 +4,7 @@
 Modules are to be used at your own risk.  Author accepts no liability for resluts of nodes use.  
 
 ##Example
-![Example](./wago/icons/RIO.png)
+![Example](wago/icons/RIO.png)
 
 ##Version history
 * 0.0.1	First release
