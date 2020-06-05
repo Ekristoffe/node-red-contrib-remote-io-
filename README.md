@@ -4,7 +4,7 @@
 Modules are to be used at your own risk.  Author accepts no liability for resluts of nodes use.  
 
 ##Example
-![Example](/data/node_modules/node-red-contrib-remote-io/wago/icons/RIO.png)
+![Remote I/O](https://data/node_modules/node-red-contrib-remote-io/wago/icons/RIO.png)
 
 ##Version history
 * 0.0.1	First release
