@@ -22,46 +22,74 @@ function limit(lo, val, hi) {
 		}
 	}
 }
-		
-function fromSigned(resolution, num, raw2Complement) {
+
+function signedMask(resolution) {
 	let _mask = Math.pow(2,15) >>> 0;
-	let _sub = Math.pow(2,16) >>> 0;
 	
 	switch(resolution){
 		case "4_Bit":
 			_mask = Math.pow(2,3) >>> 0;
-			_sub = Math.pow(2,4) >>> 0;
 			break;
 		case "8_Bit":
 			_mask = Math.pow(2,7) >>> 0;
-			_sub = Math.pow(2,8) >>> 0;
 			break;
 		case "12_Bit":
 			_mask = Math.pow(2,11) >>> 0;
-			_sub = Math.pow(2,12) >>> 0;
 			break;
 		case "16_Bit":
 			_mask = Math.pow(2,15) >>> 0;
-			_sub = Math.pow(2,16) >>> 0;
 			break;
 		case "20_Bit":
 			_mask = Math.pow(2,19) >>> 0;
-			_sub = Math.pow(2,20) >>> 0;
 			break;
 		case "24_Bit":
 			_mask = Math.pow(2,23) >>> 0;
-			_sub = Math.pow(2,24) >>> 0;
 			break;
 		case "28_Bit":
 			_mask = Math.pow(2,27) >>> 0;
-			_sub = Math.pow(2,28) >>> 0;
 			break;
 		case "32_Bit":
 			_mask = Math.pow(2,31) >>> 0;
+			break;
+	}
+  return _mask;
+}
+
+function signedSub(resolution) {
+	let _sub = Math.pow(2,16) >>> 0;
+	
+	switch(resolution){
+		case "4_Bit":
+			_sub = Math.pow(2,4) >>> 0;
+			break;
+		case "8_Bit":
+			_sub = Math.pow(2,8) >>> 0;
+			break;
+		case "12_Bit":
+			_sub = Math.pow(2,12) >>> 0;
+			break;
+		case "16_Bit":
+			_sub = Math.pow(2,16) >>> 0;
+			break;
+		case "20_Bit":
+			_sub = Math.pow(2,20) >>> 0;
+			break;
+		case "24_Bit":
+			_sub = Math.pow(2,24) >>> 0;
+			break;
+		case "28_Bit":
+			_sub = Math.pow(2,28) >>> 0;
+			break;
+		case "32_Bit":
 			_sub = Math.pow(2,32) >>> 0;
 			break;
 	}
-	
+  return _sub;
+}
+		
+function fromSigned(resolution, num, raw2Complement) {
+	let _mask = signedMask(resolution);
+	let _sub = signedSub(resolution);
 	let _num = num;
 	if (num < 0) {
 		if (raw2Complement !== false) {
@@ -74,44 +102,8 @@ function fromSigned(resolution, num, raw2Complement) {
 }
 
 function toSigned(resolution, num, raw2Complement) {
-	let _mask = Math.pow(2,15) >>> 0;
-	let _sub = Math.pow(2,16) >>> 0;
-	
-	switch(resolution){
-		case "4_Bit":
-			_mask = Math.pow(2,3) >>> 0;
-			_sub = Math.pow(2,4) >>> 0;
-			break;
-		case "8_Bit":
-			_mask = Math.pow(2,7) >>> 0;
-			_sub = Math.pow(2,8) >>> 0;
-			break;
-		case "12_Bit":
-			_mask = Math.pow(2,11) >>> 0;
-			_sub = Math.pow(2,12) >>> 0;
-			break;
-		case "16_Bit":
-			_mask = Math.pow(2,15) >>> 0;
-			_sub = Math.pow(2,16) >>> 0;
-			break;
-		case "20_Bit":
-			_mask = Math.pow(2,19) >>> 0;
-			_sub = Math.pow(2,20) >>> 0;
-			break;
-		case "24_Bit":
-			_mask = Math.pow(2,23) >>> 0;
-			_sub = Math.pow(2,24) >>> 0;
-			break;
-		case "28_Bit":
-			_mask = Math.pow(2,27) >>> 0;
-			_sub = Math.pow(2,28) >>> 0;
-			break;
-		case "32_Bit":
-			_mask = Math.pow(2,31) >>> 0;
-			_sub = Math.pow(2,32) >>> 0;
-			break;
-	}
-	
+	let _mask = signedMask(resolution);
+	let _sub = signedSub(resolution);
 	let _num = num;
 	if ((num & _mask) !== 0) {
 		if (raw2Complement !== false) {
