@@ -1,7 +1,7 @@
 # node-red-contrib-remote-io
 [Node-RED](http://nodered.org/) nodes to easily map WAGO 750 Modules. 
 
-Modules are to be used at your own risk.  Author accepts no liability for resluts of nodes use.  
+Modules are to be used at your own risk.  Author accepts no liability for results of nodes use.  
 
 ##Example
 ![Remote I/O](https://www.wago.com/media/images/hf2/hff/9540396417054.jpg)
